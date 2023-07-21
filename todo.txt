@@ -1,0 +1,5 @@
+- Generate random passphrase
+- Print stats (bits of entropy, # guesses, etc.)
+- Explain math
+- User chooses strength
+- UI
