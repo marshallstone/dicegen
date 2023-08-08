@@ -2,11 +2,15 @@ package main
 
 import (
 	"encoding/csv"
-	"fmt"
 	"math/rand"
 	"os"
 	"strconv"
 	"time"
+
+	fy "fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 )
 
 type Pair struct {
@@ -83,5 +87,22 @@ func main() {
 	pairs, err := parseWords(words)
 	check(err)
 
-	fmt.Println(getSecurePhrase(pairs))
+	// Simple GUI
+	appGui := app.New()
+	myWindow := appGui.NewWindow("Random Passphrase Generator")
+
+	phraseLabel := widget.NewLabel("")
+	generateButton := widget.NewButton("Generate", func() {
+		phrase := getSecurePhrase(pairs)
+		phraseLabel.SetText(phrase)
+	})
+
+	content := container.NewVBox(
+		generateButton,
+		phraseLabel,
+	)
+
+	myWindow.SetContent(content)
+	myWindow.Resize(fy.NewSize(500, 300))
+	myWindow.ShowAndRun()
 }
