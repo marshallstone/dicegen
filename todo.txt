@@ -1,4 +1,5 @@
 - Generate random passphrase
+- User generated random mode (enter rolls return words)
 - Print stats (bits of entropy, # guesses, etc.)
 - Explain math
 - User chooses strength
